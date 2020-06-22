@@ -81,7 +81,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    CircularProgressIndicator(),
+                    CircularProgressIndicator(backgroundColor: Colors.white,),
                     Padding(
                       padding: EdgeInsets.only(top:20.0),
                     ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:clenic_android/screens/Home.dart';
+import 'file:///C:/Disco%20D/Repositorios/clenic_android/lib/screens/navigation/Home.dart';
 
 class NavigationDrawer extends StatefulWidget{
   @override
