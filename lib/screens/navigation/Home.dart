@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:location/location.dart';
 import 'Engineers.dart';
 import 'Orders.dart';
 import 'Reports.dart';
 import 'Profile.dart';
+
 
 class Home extends StatefulWidget{
   @override
@@ -11,6 +13,21 @@ class Home extends StatefulWidget{
 }
 
 class _HomeState extends State<Home>{
+  @override
+  void initState() {
+    super.initState();
+    _getLocationPermission();
+  }
+
+  void _getLocationPermission() async {
+    var location = new Location();
+    try {
+      location.requestPermission();
+    } on Exception catch (_) {
+      print('There was a problem allowing location access');
+    }
+  }
+
   int _selectDraweItem=0;
   String title="Mis Ordenes";
   _getDrawerItemWidget(int pos){
