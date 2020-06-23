@@ -1,5 +1,4 @@
 class CEngineer{
-  //amdjasn
   int id;
   String name;
   String email;
@@ -11,8 +10,8 @@ class CEngineer{
     return  CEngineer(
       id:json["id"] as int,
       name: json["nombre"] as String,
-      email: json["email"] as String,
-      telephone: json ["telephone"] as String,
+      email: json["correo"] as String,
+      telephone: json ["numeroContacto"] as String,
     );
   }
 }
