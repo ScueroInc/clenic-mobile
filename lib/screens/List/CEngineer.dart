@@ -1,5 +1,4 @@
 class CEngineer{
-  //amdjasn
   int id;
   String name;
   String email;
@@ -9,10 +8,10 @@ class CEngineer{
 
   factory CEngineer.fromJson(Map<String,dynamic>json){
     return  CEngineer(
-      id:json["id"] as int,
+      id:json["ingenieroId"] as int,
       name: json["nombre"] as String,
-      email: json["email"] as String,
-      telephone: json ["telephone"] as String,
+      email: json["correo"] as String,
+      telephone: json ["numeroContacto"] as String,
     );
   }
 }
