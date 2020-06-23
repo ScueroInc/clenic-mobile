@@ -9,8 +9,12 @@ class Orders extends StatefulWidget{
 class _OrdersState extends State<Orders>{
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Scaffold(
+       
+       body:
+       Center(
       child: Text("Órdenes"),
+    ),
     );
   }
 
