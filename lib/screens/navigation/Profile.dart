@@ -9,8 +9,12 @@ class Profile extends StatefulWidget{
 class _ProfileState extends State<Profile>{
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text("Perfil"),
+    return Scaffold(
+
+        body:
+        Center(
+        child: Text("Traviesa XXX"),
+        ),
     );
   }
 

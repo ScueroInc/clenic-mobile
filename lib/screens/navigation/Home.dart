@@ -12,12 +12,14 @@ class Home extends StatefulWidget{
 
 class _HomeState extends State<Home>{
   int _selectDraweItem=0;
+  String title="Mis Ordenes";
   _getDrawerItemWidget(int pos){
     switch(pos){
-      case 0: return Orders();
-      case 1: return Engineers();
-      case 2: return Reports();
-      case 3: return Profile();
+      case 0: {title="Mis Ordenes";
+        return Orders();}
+      case 1: {title="Mis Ingenieros";return Engineers();}
+      case 2: {title="Mis Reportes";return Reports();}
+      case 3: {title="Mi Perfil";return Profile();}
     }
   }
 
@@ -33,7 +35,7 @@ class _HomeState extends State<Home>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Inicio"),
+        title: Text(title),
       ),
       drawer: Drawer(
         child: ListView(

@@ -19,8 +19,7 @@ class _LocationEngineerState extends State<LocationEngineer> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: Text('Posición Ingenieros'),
           backgroundColor: Colors.blueAccent[700],
@@ -32,7 +31,6 @@ class _LocationEngineerState extends State<LocationEngineer> {
             zoom: 11.0,
           ),
         ),
-      ),
     );
   }
 }
