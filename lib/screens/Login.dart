@@ -13,37 +13,6 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  final TextEditingController userController = new TextEditingController();
-  final TextEditingController passwordController = new TextEditingController();
-  bool _isLoading = false;
-
-  logIn(String user, String password) async {
-    Map data = {
-      "username": user,
-      "password": password,
-    };
-    var jsonResponse = null;
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    var response = await http.post("192.168.1.54:8085/Sesion/login", body: data);
-    if (response.statusCode == 200) {
-      jsonResponse = json.decode(response.body);
-      if (jsonResponse!=null){
-        setState(() {
-          _isLoading=false;
-        });
-        sharedPreferences.setString("sessionToken", jsonResponse['sessionToken']);
-        Navigator.of(context)
-            .pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context)=>NavigationDrawer()),
-                (Route<dynamic> route)=> false);
-      }
-    }
-    else{
-      setState(() {
-        _isLoading = false;
-      });
-      print(response.body);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +42,7 @@ class _LoginState extends State<Login> {
                 ],
               ),
             ),
-            _isLoading ? Center(child: CircularProgressIndicator()) : Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 40),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,7 +81,6 @@ class _LoginState extends State<Login> {
                                     bottom:
                                         BorderSide(color: Colors.grey[300]))),
                             child: TextFormField(
-                              controller: userController,
                               decoration: InputDecoration(
                                   border: InputBorder.none,
                                   hintText: "Usuario",
@@ -122,7 +90,6 @@ class _LoginState extends State<Login> {
                           Container(
                             padding: EdgeInsets.all(10),
                             child: TextFormField(
-                              controller: passwordController,
                               decoration: InputDecoration(
                                   border: InputBorder.none,
                                   hintText: "Contraseña",
@@ -152,12 +119,8 @@ class _LoginState extends State<Login> {
                   FadeAnimation(
                     2.1,
                     GestureDetector(
-                      onTap: userController.text==""||passwordController.text==""?null:() {
-                        setState(() {
-                          _isLoading = true;
-                        });
+                      onTap: () {
 
-                        logIn(userController.text, passwordController.text);
                       },
 //                    onTap: () {
 //                      Navigator.push(
