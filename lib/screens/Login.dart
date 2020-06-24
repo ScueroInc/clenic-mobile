@@ -13,6 +13,15 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  final _formKey=GlobalKey<FormState>();
+  final userController = TextEditingController();
+  final passwordController= TextEditingController();
+  @override
+  void dispose() {
+    userController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +94,13 @@ class _LoginState extends State<Login> {
                                   border: InputBorder.none,
                                   hintText: "Usuario",
                                   hintStyle: TextStyle(color: Colors.grey)),
+                              validator: (value){
+                                if(value.isEmpty){
+                                  return 'Campo vacío';
+                                }
+                                return null;
+                              },
+                              controller: userController,
                             ),
                           ),
                           Container(
@@ -94,6 +110,13 @@ class _LoginState extends State<Login> {
                                   border: InputBorder.none,
                                   hintText: "Contraseña",
                                   hintStyle: TextStyle(color: Colors.grey)),
+                              validator: (value){
+                                if (value.isEmpty){
+                                  return 'Campo vacío';
+                                }
+                                return null;
+                              },
+                              controller: passwordController,
                             ),
                           ),
                         ],
