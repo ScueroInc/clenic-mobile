@@ -17,6 +17,7 @@ class _HomeState extends State<Home>{
   void initState() {
     super.initState();
     _getLocationPermission();
+    _getTitle();
   }
 
   void _getLocationPermission() async {
@@ -27,17 +28,28 @@ class _HomeState extends State<Home>{
       print('There was a problem allowing location access');
     }
   }
-
+  var appBarTitleText=new Text("Mis Ordenes");
   int _selectDraweItem=0;
   String title="Mis Ordenes";
   _getDrawerItemWidget(int pos){
     switch(pos){
       case 0: {title="Mis Ordenes";
         return Orders();}
-      case 1: {title="Mis Ingenieros";return Engineers();}
-      case 2: {title="Mis Reportes";return Reports();}
-      case 3: {title="Mi Perfil";return Profile();}
+      case 1: {return Engineers();}
+      case 2: {return Reports();}
+      case 3: {return Profile();}
     }
+  }
+  _getTitle(){
+    switch(_selectDraweItem){
+      case 0: {title="Mis Ordenes";break;}
+      case 1: {title="Mis Ingenieros";break;}
+      case 2: {title="Mis Reportes";break;}
+      case 3: {title="Mi Perfil";break;}
+    }
+    setState(() {
+      appBarTitleText=Text(title);
+    });
   }
 
   _onSelectItem(int pos){
@@ -50,6 +62,7 @@ class _HomeState extends State<Home>{
 
   @override
   Widget build(BuildContext context) {
+    _getTitle();
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
@@ -58,8 +71,8 @@ class _HomeState extends State<Home>{
         child: ListView(
           children: <Widget>[
             UserAccountsDrawerHeader(
-              accountName: Text('Nombre del Administrador'),
-              accountEmail: Text('emailadmin12@gmail.com'),
+              accountName: Text('Mayra Couto'),
+              accountEmail: Text('mcouto@solera.pe'),
               currentAccountPicture: CircleAvatar(
                 backgroundColor: Colors.blue,
                 child: Text('N',style: TextStyle(fontSize: 40.0),),

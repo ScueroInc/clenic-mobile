@@ -13,7 +13,7 @@ class _ProfileState extends State<Profile>{
 
         body:
         Center(
-        child: Text("Traviesa XXX"),
+        child: Text("Mayra"),
         ),
     );
   }
