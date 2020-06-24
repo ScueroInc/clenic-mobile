@@ -12,20 +12,6 @@ class _NavigationDrawerState extends State<NavigationDrawer>{
 
   SharedPreferences sharedPreferences;
 
-  @override
-  void initState() {
-    super.initState();
-    checkLoginStatus();
-  }
-
-  checkLoginStatus() async{
-    sharedPreferences=await SharedPreferences.getInstance();
-    if (sharedPreferences.getString("sessionToken")==null){
-      Navigator.of(context)
-          .pushAndRemoveUntil(MaterialPageRoute(builder: (BuildContext context)=>Login()),
-              (Route<dynamic> route)=> false);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {

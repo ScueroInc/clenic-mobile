@@ -87,10 +87,8 @@ class _LoginState extends State<Login> {
                         ),
                       ],
                     ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
+                  ),),
+                  SizedBox(height: 20,),
                   Center(
                     child: FadeAnimation(1.9,Text("No te acuerdas tu contraseña?",
                     style: TextStyle(
@@ -105,16 +103,6 @@ class _LoginState extends State<Login> {
                     child: Container(
                       height: 50,
                         margin: EdgeInsets.symmetric(horizontal: 60),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          color: Color.fromRGBO(49, 39, 79, 1),
-                        ),
-                        child: Center(
-                          child: Text(
-                            "Entrar",
-                            style: TextStyle(color: Colors.white, fontSize: 20),
-                          ),
-                        ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
                         color: Color.fromRGBO(49, 39, 79, 1),
