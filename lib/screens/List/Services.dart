@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'CEngineer.dart';
 
 class Services {
-  static const String url = '192.168.1.54:8085/Ingeniero/listaIngenieros';
+  static const String url = 'http://192.168.1.54:8085/Ingeniero/listaIngenieros';
 
   static Future<List<CEngineer>> getEngineers() async {
     try {
