@@ -2,10 +2,10 @@ import 'package:clenic_android/animations/FadeAnimation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:clenic_android/screens/SignUp.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
-import 'NavigationDrawer.dart';
+//import 'dart:convert';
+//import 'package:http/http.dart' as http;
+//import 'package:shared_preferences/shared_preferences.dart';
+//import 'NavigationDrawer.dart';
 
 class Login extends StatefulWidget {
   @override
