@@ -75,7 +75,59 @@ class _ProfileState extends State<Profile>{
                     child: Text('Mayra Couto', style: TextStyle(color: Colors.white,fontSize: 23, fontWeight: FontWeight.bold  ),),
                   ),
                   Text('Plan Maestro', style: TextStyle(color: Colors.white,fontSize: 15, fontWeight: FontWeight.w300),),
+        Card(color: Colors.indigo,
+          child: Padding(
+            padding: EdgeInsets.symmetric(vertical:10.0, horizontal: 5.0),
 
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                SizedBox(height: 5.0,),
+                Text(
+                  "Email",
+                  style: TextStyle(fontSize: 15.0, color: Colors.grey,),
+                ),
+                SizedBox(height: 5.0,),
+                Text(
+                  "mcouto@solera.pe",
+                  style: TextStyle(fontSize: 17.0, color: Colors.white,),
+                ),
+                SizedBox(height: 5.0,),
+                Text(
+                  "Numero de contacto",
+                  style: TextStyle(fontSize: 15.0, color: Colors.grey,),
+                ),
+                SizedBox(height: 5.0,),
+                Text(
+                  "+51 955740898",
+                  style: TextStyle(fontSize: 17.0, color: Colors.white,),
+                ),
+                SizedBox(height: 5.0,),
+                Text(
+                  "Cantidad de ingenieros",
+                  style: TextStyle(fontSize: 15.0, color: Colors.grey,),
+                ),
+                SizedBox(height: 5.0,),
+                Text(
+                  "5",
+                  style: TextStyle(fontSize: 17.0, color: Colors.white,),
+                ),
+                SizedBox(height: 5.0,),
+                Text(
+                  "Fecha de renovación",
+                  style: TextStyle(fontSize: 15.0, color: Colors.grey,),
+                ),
+                SizedBox(height: 5.0,),
+                Text(
+                  "02 de julio del 2020",
+                  style: TextStyle(fontSize: 17.0, color: Colors.white,),
+                ),
+
+              ],
+            ),
+          ),
+        ),
                 ],
               ),
 
