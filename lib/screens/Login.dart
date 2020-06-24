@@ -17,14 +17,14 @@ class _LoginState extends State<Login> {
   final TextEditingController passwordController = new TextEditingController();
   bool _isLoading = false;
 
-  logIn(String user, password) async {
+  logIn(String user, String password) async {
     Map data = {
       "username": user,
       "password": password,
     };
     var jsonResponse = null;
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    var response = await http.post("http://192.168.1.54:8085/Sesion/login", body: data);
+    var response = await http.post("192.168.1.54:8085/Sesion/login", body: data);
     if (response.statusCode == 200) {
       jsonResponse = json.decode(response.body);
       if (jsonResponse!=null){
