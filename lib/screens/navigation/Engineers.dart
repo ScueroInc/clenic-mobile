@@ -30,37 +30,38 @@ class _EngineersState extends State<Engineers> {
           Expanded(
             child: ListView.builder(
               padding: EdgeInsets.all(10.0),
-              itemCount: 3,
+              itemCount: 1,
               itemBuilder: (BuildContext context,int index){
                 return Card(
                   child: Padding(
                     padding: EdgeInsets.all(10.0),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          "4",
-                          style: TextStyle(fontSize: 16.0, color: Colors.black,),
-                        ),
-                        SizedBox(height: 5.0,),
-                        Text(
-                          "Paola",
-                          style: TextStyle(fontSize: 16.0, color: Colors.grey,),
-                        ),
-                        SizedBox(height: 5.0,),
-                        Text(
-                          "alex@gmail.com",
-                          style: TextStyle(fontSize: 16.0, color: Colors.grey,),
-                        ),
-                        SizedBox(height: 5.0,),
-                        Text(
-                          "243212345",
-                          style: TextStyle(fontSize: 16.0, color: Colors.grey,),
-                        ),
-                      ],
-                    ),
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        "4",
+                        style: TextStyle(fontSize: 16.0, color: Colors.black,),
+                      ),
+                      SizedBox(height: 5.0,),
+                      Text(
+                        "Paola",
+                        style: TextStyle(fontSize: 16.0, color: Colors.grey,),
+                      ),
+                      SizedBox(height: 5.0,),
+                      Text(
+                        "alex@gmail.com",
+                        style: TextStyle(fontSize: 16.0, color: Colors.grey,),
+                      ),
+                      SizedBox(height: 5.0,),
+                      Text(
+                        "243212345",
+                        style: TextStyle(fontSize: 16.0, color: Colors.grey,),
+                      ),
+                    ],
                   ),
+                  ),
+
                 );
               },
             ),
