@@ -108,7 +108,7 @@ class _LoginState extends State<Login> {
                         color: Color.fromRGBO(49, 39, 79, 1),
                       ),
                       child: Center(
-                        child: Text("Entrar",style: TextStyle(color: Colors.white,fontSize: 20),),
+                        child: Text("Entrar huacho",style: TextStyle(color: Colors.white,fontSize: 20),),
                       ),
                     ),
                   ),),
