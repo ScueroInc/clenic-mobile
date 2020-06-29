@@ -47,6 +47,7 @@ class _HomeState extends State<Home>{
       case 2: {title="Mis Reportes";break;}
       case 3: {title="Mi Perfil";break;}
     }
+  /**/
     setState(() {
       appBarTitleText=Text(title);
     });
@@ -66,6 +67,12 @@ class _HomeState extends State<Home>{
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: (){},
+          )
+        ],
       ),
       drawer: Drawer(
         child: ListView(
