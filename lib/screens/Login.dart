@@ -1,8 +1,15 @@
 import 'package:clenic_android/animations/FadeAnimation.dart';
+import 'package:clenic_android/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:clenic_android/screens/SignUp.dart';
 import 'package:clenic_android/screens/NavigationDrawer.dart';
+//LIBRERIAS PARA LAS APIS
+import 'dart:async';
+import "package:http/http.dart" as http ;
+import 'dart:convert';
+import 'package:clenic_android/models/LoginResponse.dart';
+import 'package:clenic_android/common/Request.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -10,6 +17,54 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  String _clave="";
+  String _usuario="";
+
+  void _showAlert(String valor){
+    AlertDialog dialogo=new AlertDialog(
+      content: new Text(valor),
+    );
+    showDialog(context: context,child: dialogo);
+  }
+
+  Future<void> Autenticarse ()async {
+    Map cuerpoRqst = {
+      "username": _usuario,
+      "password": _clave,
+    };
+    var _headersPost = {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+    };
+
+    var _uri = new Uri.http(urlBaseApi, "Sesion/login");
+
+    await http.post(_uri, headers: _headersPost, body: json.encode(cuerpoRqst))
+        .then((data) {
+      if (data.statusCode == 200) {
+        var objLogin = LoginResponse.fromJson(json.decode( data.body));
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context)=>NavigationDrawer())
+        );
+      } else {
+        _showAlert(data.body);
+      }
+      return ;
+    });
+  }
+
+
+// var respuesta=autenticacionPost(_uri);
+// respuesta.then((value){
+
+//   Navigator.push(
+//       context,
+//       MaterialPageRoute(builder: (context)=>NavigationDrawer())
+//   );
+// });
+
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -74,6 +129,7 @@ class _LoginState extends State<Login> {
                                 border: InputBorder.none,
                                 hintText: "Usuario",
                                 hintStyle: TextStyle(color: Colors.grey)),
+                            onChanged: (String usuario){_usuario=usuario;},
                           ),
                         ),
                         Container(
@@ -83,7 +139,9 @@ class _LoginState extends State<Login> {
                                 border: InputBorder.none,
                                 hintText: "Contraseña",
                                 hintStyle: TextStyle(color: Colors.grey)),
+                                onChanged: (String clave){_clave=clave;},
                           ),
+
                         ),
                       ],
                     ),
@@ -96,9 +154,11 @@ class _LoginState extends State<Login> {
                   SizedBox(height: 25,),
                   FadeAnimation(2.1,GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context)=>NavigationDrawer()));
+                      Autenticarse();
+                      //Navigator.push(
+                      //  context,
+                      //  MaterialPageRoute(builder: (context)=>NavigationDrawer())
+                      //);
                     },
                     child: Container(
                       height: 50,
