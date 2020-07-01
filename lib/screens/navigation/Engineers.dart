@@ -30,7 +30,7 @@ class _EngineersState extends State<Engineers> {
           Expanded(
             child: ListView.builder(
               padding: EdgeInsets.all(10.0),
-              itemCount: 2,
+              itemCount: 1,
               itemBuilder: (BuildContext context,int index){
                 return Card(
                   child: Padding(
@@ -40,22 +40,22 @@ class _EngineersState extends State<Engineers> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        "Codigo de Ingeniero: 4",
+                        "Codigo de Ingeniero: "+ "engineers[index].id.toString()",
                         style: TextStyle(fontSize: 16.0, color: Colors.black,),
                       ),
                       SizedBox(height: 5.0,),
                       Text(
-                        "Alex Juep",
+                        "Nombre: "+"engineers[index].name",
                         style: TextStyle(fontSize: 16.0, color: Colors.grey,),
                       ),
                       SizedBox(height: 5.0,),
                       Text(
-                        "Correo: alex@gmail.com",
+                        "Correo: "+"engineers[index].email",
                         style: TextStyle(fontSize: 16.0, color: Colors.grey,),
                       ),
                       SizedBox(height: 5.0,),
                       Text(
-                        "Numero de telefono: +51 943212345",
+                        "Numero de telefono: "+"engineers[index].telephone",
                         style: TextStyle(fontSize: 16.0, color: Colors.grey,),
                       ),
                     ],

@@ -1,4 +1,5 @@
 import 'package:clenic_android/animations/FadeAnimation.dart';
+import 'package:clenic_android/globals.dart';
 import 'package:clenic_android/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -45,6 +46,8 @@ class _LoginState extends State<Login> {
         .then((data) {
       if (data.statusCode == 200) {
         var objLogin = LoginResponse.fromJson(json.decode( data.body));
+        userId=objLogin.personaId.toString();
+        userPerson=objLogin.nombre.toString();
         print(json.encode(objLogin));
         switch(objLogin.perfil.toString())
         {

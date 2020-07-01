@@ -1,3 +1,4 @@
+import 'package:clenic_android/globals.dart';
 import 'package:clenic_android/screens/navigation/Places.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
@@ -128,11 +129,11 @@ class _HomeState extends State<Home>{
         child: ListView(
           children: <Widget>[
             UserAccountsDrawerHeader(
-              accountName: Text('Mayra Couto'),
+              accountName: Text(userPerson),
               accountEmail: Text('mcouto@solera.pe'),
               currentAccountPicture: CircleAvatar(
                 backgroundColor: Colors.blue,
-                child: Text('N',style: TextStyle(fontSize: 40.0),),
+                child: Text(userPerson.substring(0,1),style: TextStyle(fontSize: 40.0),),
               ),
             ),
             ListTile(
