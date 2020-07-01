@@ -150,6 +150,7 @@ class _LoginState extends State<Login> {
                                 border: InputBorder.none,
                                 hintText: "Contraseña",
                                 hintStyle: TextStyle(color: Colors.grey)),
+                                obscureText: true,
                                 onChanged: (String clave){_clave=clave;},
                           ),
 
@@ -166,10 +167,6 @@ class _LoginState extends State<Login> {
                   FadeAnimation(2.1,GestureDetector(
                     onTap: () {
                       Autenticarse();
-                      //Navigator.push(
-                      //  context,
-                      //  MaterialPageRoute(builder: (context)=>NavigationDrawer())
-                      //);
                     },
                     child: Container(
                       height: 50,
@@ -179,10 +176,11 @@ class _LoginState extends State<Login> {
                         color: Color.fromRGBO(49, 39, 79, 1),
                       ),
                       child: Center(
-                        child: Text("Entrar",style: TextStyle(color: Colors.white,fontSize: 20),),
+                        child: Text("Ingresar",style: TextStyle(color: Colors.white,fontSize: 20),),
                       ),
                     ),
-                  ),),
+                  ),
+                  ),
                   SizedBox(height: 25,),
                   GestureDetector(
                     onTap: () {
@@ -193,7 +191,9 @@ class _LoginState extends State<Login> {
                     },
                     child: Center(
                       child: FadeAnimation(2.3,Text("Regístrate gratis",
-                      style: TextStyle(color: Color.fromRGBO(49, 39, 79, 1)),),)),
+                      style: TextStyle(color: Color.fromRGBO(49, 39, 79, 1)),),
+                      )
+                    ),
                   ),
                 ],
               ),
