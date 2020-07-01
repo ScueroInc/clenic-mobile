@@ -109,7 +109,7 @@ class _LoginState extends State<Login> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   FadeAnimation(1.5,Text(
-                    'Login',
+                    'Clenic',
                     style: TextStyle(
                         color: Color.fromRGBO(49, 39, 79, 1),
                         fontWeight: FontWeight.bold,
@@ -159,7 +159,7 @@ class _LoginState extends State<Login> {
                   ),),
                   SizedBox(height: 20,),
                   Center(
-                    child: FadeAnimation(1.9,Text("No te acuerdas tu contraseña?",
+                    child: FadeAnimation(1.9,Text("Olvidaste tu contraseña?",
                     style: TextStyle(
                         color:Color.fromRGBO(196, 135, 198, 1) ),),),),
                   SizedBox(height: 25,),

@@ -1,6 +1,7 @@
 import 'package:clenic_android/screens/navigation/Places.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
+import '../Login.dart';
 import 'Engineers.dart';
 import 'Orders.dart';
 import 'Reports.dart';
@@ -20,7 +21,52 @@ class _HomeState extends State<Home>{
     _getLocationPermission();
     _getTitle();
   }
+  Future<bool> _onWillPop(BuildContext context,BuildContext context1) async {
+    BuildContext context1 =context;
+    BuildContext context2 =context1;
+    return (await showDialog(
 
+      context: context,
+      builder: (context) => new AlertDialog(
+        title: new Text('Estás seguro?'),
+        content: new Text('Quieres cerrar tu sesión?'),
+        contentTextStyle: TextStyle(
+          color: Colors.white,
+          fontSize: 20.0,
+        ),
+        titleTextStyle:TextStyle(
+          color: Colors.white,
+            fontSize: 28.0,
+        ),
+        actions: <Widget>[
+          new FlatButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            textColor: Colors.white,
+            child: new Text('No',style: TextStyle(fontSize: 20.0),),
+          ),
+          new FlatButton(
+            onPressed: () =>_closeSesion(context,context1,context2),
+            textColor: Colors.white,
+            child: new Text('Sí', style: TextStyle(fontSize: 20.0),
+            ),
+          ),
+        ],
+        elevation: 24.0,
+        backgroundColor:Colors.lightBlue ,
+        shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(15)),
+
+      ),
+    )) ?? false;
+  }
+  void _closeSesion(BuildContext context,BuildContext context1,BuildContext context2) {
+    Navigator.of(context).pop(true);
+    Navigator.of(context1).pop(true);
+    Navigator.of(context2).pop(true);
+    Navigator.push(
+      context2,
+      MaterialPageRoute(builder: (context) => Login()),
+    );
+  }
   void _getLocationPermission() async {
     var location = new Location();
     try {
@@ -133,7 +179,7 @@ class _HomeState extends State<Home>{
             ListTile(
               title: Text('Salir'),
               leading: Icon(Icons.exit_to_app),
-              onTap: () {
+              onTap: () {_onWillPop(context,context);
 
               },
             ),
