@@ -1,10 +1,8 @@
-import 'package:clenic_android/screens/navigation/Places.dart';
+import 'package:clenic_android/screens/navigation/Engineers.dart';
+import 'package:clenic_android/screens/navigation/Orders.dart';
+import 'package:clenic_android/screens/navigation/Profile.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
-import 'Engineers.dart';
-import 'Orders.dart';
-import 'Reports.dart';
-import 'Profile.dart';
 
 
 class Home extends StatefulWidget{
@@ -34,22 +32,19 @@ class _HomeState extends State<Home>{
   String title="Mis Ordenes";
   _getDrawerItemWidget(int pos){
     switch(pos){
-      case 0: {title="Mis Órdenes";
+      case 0: {title="Mis Ordenes";
         return Orders();}
       case 1: {return Engineers();}
-      case 2: {return Reports();}
-      case 3: {return Places();}
-      case 4: {return Profile();}
-
+      case 2: {return;}
+      case 3: {return Profile();}
     }
   }
   _getTitle(){
     switch(_selectDraweItem){
-      case 0: {title="Mis Órdenes";break;}
+      case 0: {title="Mis Ordenes";break;}
       case 1: {title="Mis Ingenieros";break;}
       case 2: {title="Mis Reportes";break;}
-      case 3: {title="Mis Lugares";break;}
-      case 4: {title="Mi Perfil";break;}
+      case 3: {title="Mi Perfil";break;}
     }
   /**/
     setState(() {
@@ -113,21 +108,13 @@ class _HomeState extends State<Home>{
                 _onSelectItem(2);
               },
             ),
-            ListTile(
-              title: Text('Lugares'),
-              leading: Icon(Icons.domain),
-              selected: (3 == _selectDraweItem),
-              onTap: () {
-                _onSelectItem(3);
-              },
-            ),
             Divider(height: 5.0,),
             ListTile(
               title: Text('Perfil'),
               leading: Icon(Icons.account_circle),
-              selected: (4 == _selectDraweItem),
+              selected: (3 == _selectDraweItem),
               onTap: () {
-                _onSelectItem(4);
+                _onSelectItem(3);
               },
             ),
             ListTile(

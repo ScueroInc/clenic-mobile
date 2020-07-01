@@ -11,6 +11,8 @@ import 'dart:convert';
 import 'package:clenic_android/models/LoginResponse.dart';
 import 'package:clenic_android/common/Request.dart';
 
+import 'engineer/EngineerNavigationDrawer.dart';
+
 class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
@@ -43,10 +45,19 @@ class _LoginState extends State<Login> {
         .then((data) {
       if (data.statusCode == 200) {
         var objLogin = LoginResponse.fromJson(json.decode( data.body));
-        Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context)=>NavigationDrawer())
-        );
+        print(json.encode(objLogin));
+        switch(objLogin.perfil.toString())
+        {
+          case "I": { Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context)=>EngineerNavigationDrawer()));
+          break;}
+          case "A": {Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context)=>NavigationDrawer())
+          );break;}
+        }
+
       } else {
         _showAlert(data.body);
       }
@@ -69,7 +80,7 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     return MaterialApp(
-      home: Scaffold(
+      home: Scaffold(resizeToAvoidBottomPadding: false,
         backgroundColor: Colors.white,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
