@@ -9,6 +9,51 @@ class Orders extends StatefulWidget{
 }
 
 class _OrdersState extends State<Orders>{
+
+  Future<bool> _onWillPop(BuildContext context,BuildContext context1,String idorden) async {
+    BuildContext context1 =context;
+    BuildContext context2 =context1;
+    return (await showDialog(
+
+      context: context,
+      builder: (context) => new AlertDialog(
+        title: new Text('Desea realizar el reporte fin'),
+        content: new Text('Desea realizar el reporte final de la orden '+idorden+' ?'),
+        contentTextStyle: TextStyle(
+          color: Colors.white,
+          fontSize: 20.0,
+        ),
+        titleTextStyle:TextStyle(
+          color: Colors.white,
+          fontSize: 28.0,
+        ),
+        actions: <Widget>[
+          new FlatButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            textColor: Colors.white,
+            child: new Text('No',style: TextStyle(fontSize: 20.0),),
+          ),
+          new FlatButton(
+            onPressed: () =>_reportOrder(context,context1),
+            textColor: Colors.white,
+            child: new Text('Sí', style: TextStyle(fontSize: 20.0),
+            ),
+          ),
+        ],
+        elevation: 24.0,
+        backgroundColor:Colors.lightBlue ,
+        shape: RoundedRectangleBorder(borderRadius: new BorderRadius.circular(15)),
+
+      ),
+    )) ?? false;
+  }
+  void _reportOrder(BuildContext context,context1) {
+    Navigator.of(context).pop(false);
+    /**Navigator.push(
+      context1,
+      MaterialPageRoute(builder: (context) => OrderForm()),
+    );*/
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +89,7 @@ class _OrdersState extends State<Orders>{
                         ),
                         SizedBox(height: 5.0,),
                         Text(
-                          "Mantenimiento: "+"Correctivo",
+                          "Estado: "+"Correctivo",
                           style: TextStyle(fontSize: 16.0, color: Colors.grey,),
                         ),
                       ],

@@ -1,3 +1,4 @@
+import 'package:clenic_android/globals.dart';
 import 'package:flutter/material.dart';
 
 class Profile extends StatefulWidget{
@@ -63,7 +64,8 @@ class _ProfileState extends State<Profile>{
 
                           child: CircleAvatar(
                             radius: 50,
-                            backgroundImage: AssetImage('assets/mayra.jpg'),
+                            backgroundColor: Colors.blue,
+                            child: Text(userPerson.substring(0,1),style: TextStyle(fontSize: 45.0),),
                           ),
                         ),
                       ),
@@ -72,7 +74,7 @@ class _ProfileState extends State<Profile>{
                   SizedBox(height: 10,),
                   Padding(
                     padding: const EdgeInsets.only( bottom: 8),
-                    child: Text('Mayra Couto', style: TextStyle(color: Colors.white,fontSize: 23, fontWeight: FontWeight.bold  ),),
+                    child: Text(userPerson, style: TextStyle(color: Colors.white,fontSize: 23, fontWeight: FontWeight.bold  ),),
                   ),
                   Text('Plan Maestro', style: TextStyle(color: Colors.white,fontSize: 15, fontWeight: FontWeight.w300),),
         Card(color: Colors.indigo,
