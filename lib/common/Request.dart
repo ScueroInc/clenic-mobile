@@ -46,5 +46,5 @@ import 'package:clenic_android/models/LoginResponse.dart';
 //  }
 //}
 
-final String urlBaseApi="35.193.246.207";
+final String urlBaseApi="http://192.168.1.123:8011/";
 

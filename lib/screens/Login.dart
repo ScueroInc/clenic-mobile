@@ -11,9 +11,12 @@ import "package:http/http.dart" as http ;
 import 'dart:convert';
 import 'package:clenic_android/models/LoginResponse.dart';
 import 'package:clenic_android/common/Request.dart';
+import 'package:cookie_jar/cookie_jar.dart';
+import 'package:requests/requests.dart';
+import 'package:requests/src/requests.dart';
 
 import 'engineer/EngineerNavigationDrawer.dart';
-
+import 'package:clenic_android/common/Request.dart';
 class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
@@ -31,6 +34,7 @@ class _LoginState extends State<Login> {
   }
 
   Future<void> Autenticarse ()async {
+    var cj=new CookieJar();
     var cuerpoRqst = {
       "username": _usuario,
       "password": _clave,
@@ -40,12 +44,13 @@ class _LoginState extends State<Login> {
       "Accept": "application/json",
     };
 
-    var _uri = new Uri.http(urlBaseApi, "Sesion/login");
-
-    await http.post(_uri, headers: _headersPost, body: json.encode(cuerpoRqst))
+    var __uri = new Uri.http(urlBaseApi, "Sesion/login");
+    var _uri=urlBaseApi+"Sesion/login";
+    return await Requests.post(_uri,headers: _headersPost, json: cuerpoRqst)
         .then((data) {
+          print(data.content());
       if (data.statusCode == 200) {
-        var objLogin = LoginResponse.fromJson(json.decode( data.body));
+        var objLogin = LoginResponse.fromJson(json.decode(data.content()));
         userId=objLogin.personaId.toString();
         userPerson=objLogin.nombre.toString();
         print(json.encode(objLogin));
@@ -62,7 +67,7 @@ class _LoginState extends State<Login> {
         }
 
       } else {
-        _showAlert(data.body);
+        _showAlert(data.content());
       }
       return ;
     });

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:requests/requests.dart';
 
 import 'LocationEngineer.dart';
 import 'dart:async';
@@ -7,6 +8,8 @@ import 'dart:convert';
 import 'package:clenic_android/models/LoginResponse.dart';
 import 'package:clenic_android/common/Request.dart';
 
+
+import 'package:cookie_jar/cookie_jar.dart';
 class Orders extends StatefulWidget{
   @override
   _OrdersState createState() => _OrdersState();
@@ -15,19 +18,18 @@ class Orders extends StatefulWidget{
 
 class _OrdersState extends State<Orders>{
   Future<void>ListarOrdenes()async{
-    var _uri=new Uri.http(urlBaseApi, "Orden/listaOrdenes");
-
-    await http.get(_uri)
-    .then((data) {
-      return print(json.decode(data.body) );
+    var _uri=urlBaseApi+"Orden/listaOrdenes";
+    return await Requests.get(_uri)
+    .then((date) {
+      print(date.content());
     });
-    return;
   }
 
   @override
   void initState() {
-    super.initState();
+
     ListarOrdenes();
+    super.initState();
   }
 
 
@@ -36,7 +38,6 @@ class _OrdersState extends State<Orders>{
     BuildContext context1 =context;
     BuildContext context2 =context1;
     return (await showDialog(
-
       context: context,
       builder: (context) => new AlertDialog(
         title: new Text('Desea realizar el reporte fin'),
