@@ -31,7 +31,7 @@ class _LoginState extends State<Login> {
   }
 
   Future<void> Autenticarse ()async {
-    Map cuerpoRqst = {
+    var cuerpoRqst = {
       "username": _usuario,
       "password": _clave,
     };

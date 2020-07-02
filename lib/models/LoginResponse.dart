@@ -12,7 +12,7 @@ class LoginResponse {
         this.perfil,
         this.personaId,
       });
-
+/*Para recibir un JSON y convertirlo a objeto*/
   LoginResponse.fromJson(Map<String, dynamic> Json) {
     usuarioId = Json['usuarioId'];
     nombre = Json['nombre'];
@@ -20,7 +20,7 @@ class LoginResponse {
     perfil = Json['perfil'];
     personaId = Json['personaId'];
   }
-
+/*Para enviar un objeto y convertirlo a JSON*/
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['usuarioId'] = this.usuarioId;

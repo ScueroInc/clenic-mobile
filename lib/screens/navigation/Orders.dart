@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'LocationEngineer.dart';
+import 'dart:async';
+import "package:http/http.dart" as http ;
+import 'dart:convert';
+import 'package:clenic_android/models/LoginResponse.dart';
+import 'package:clenic_android/common/Request.dart';
 
 class Orders extends StatefulWidget{
   @override
@@ -9,6 +14,23 @@ class Orders extends StatefulWidget{
 }
 
 class _OrdersState extends State<Orders>{
+  Future<void>ListarOrdenes()async{
+    var _uri=new Uri.http(urlBaseApi, "Orden/listaOrdenes");
+
+    await http.get(_uri)
+    .then((data) {
+      return print(json.decode(data.body) );
+    });
+    return;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    ListarOrdenes();
+  }
+
+
 
   Future<bool> _onWillPop(BuildContext context,BuildContext context1,String idorden) async {
     BuildContext context1 =context;
