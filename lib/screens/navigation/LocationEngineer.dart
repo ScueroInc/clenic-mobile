@@ -1,5 +1,5 @@
 import 'dart:collection';
-
+import 'package:clenic_android/globals.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -34,56 +34,19 @@ class _LocationEngineerState extends State<LocationEngineer> {
     mapController = controller;
 
     setState(() {
-      _markers.add(
-      Marker(
-      markerId: MarkerId("0"),
-      position: _center,
-      infoWindow: InfoWindow(
-          title: "Ingeniero: Alex Juep",
-          snippet: "Lugar: Central Clenic"
-      ),
-      icon: _markerIcon),
-      );
-      _markers.add(
-        Marker(
-          markerId: MarkerId("1"),
-          position: LatLng(-12.078783, -77.079737),
-          infoWindow: InfoWindow(
-              title: "Ingeniera: Cristina Huaman",
-              snippet: "Lugar: Policlinico de San Miguel"
-          ),
-            icon: _markerIconWorker),
-      );
-      _markers.add(
-        Marker(
-          markerId: MarkerId("2"),
-          position: LatLng(-12.057753, -77.096748),
-          infoWindow: InfoWindow(
-              title: "Ingeniera: Paola de Escudero",
-              snippet: "Lugar: Clinica Bellavista"
-          ),
-            icon: _markerIconWorker),
-      );
-      _markers.add(
-        Marker(
-          markerId: MarkerId("3"),
-          position: LatLng(-12.070284, -77.079765),
-          infoWindow: InfoWindow(
-              title: "Ingeniero: Gonzalo Escudero",
-              snippet: "Lugar: Sala de Practicas de la PUCP"
-          ),
-            icon: _markerIconWorker),
-      );
-      _markers.add(
-        Marker(
-            markerId: MarkerId("4"),
-            position: LatLng(-12.065981, -77.094514),
-            infoWindow: InfoWindow(
-                title: "Ingeniero: Ernesto Sanchez",
-                snippet: "Lugar: Hospital Mongrut"
-            ),
-            icon: _markerIconWorker),
-      );
+      for(int i =0;i<Engineerlist.length;i++ ){
+        _markers.add(
+          Marker(
+              markerId: MarkerId(i.toString()),
+              position: LatLng(Engineerlist[i].cordX,Engineerlist[i].cordY),
+              infoWindow: InfoWindow(
+                  title: Engineerlist[i].nombre,
+                  snippet: Engineerlist[i].direccion
+              ),
+              icon: _markerIcon),
+        );
+      }
+
 
     });
   }

@@ -1,31 +1,34 @@
-class OrdersResponse{
-  String orderId;
-  String estado;
-  int lugar_PersonasId;
-  int clienteId;
-  String nombreCliente;
-  String direccionLugar;
-  String correoCliente;
+class EngineersResponse{
+  int ingenieroId;
+  String nombre;
+  String direccion;
+  String correo;
+  int numeroContacto;
+  String dni;
+  double cordX;
+  double cordY;
 
-  OrdersResponse(
+  EngineersResponse(
       {
-        this.orderId,
-        this.estado,
-        this.lugar_PersonasId,
-        this.clienteId,
-        this.nombreCliente,
-        this.direccionLugar,
-        this.correoCliente,
+        this.ingenieroId,
+        this.nombre,
+        this.direccion,
+        this.correo,
+        this.numeroContacto,
+        this.dni,
+        this.cordX,
+        this.cordY
       });
 
-  OrdersResponse.fromJson(Map<String, dynamic> Json) {
-    orderId = Json['orderId'];
-    estado = Json['estado'];
-    lugar_PersonasId = Json['lugar_PersonasId'];
-    clienteId = Json['clienteId'];
-    nombreCliente = Json['nombreCliente'];
-    direccionLugar = Json['direccionLugar'];
-    correoCliente = Json['correoCliente'];
+  EngineersResponse.fromJson(Map<String, dynamic> Json) {
+    ingenieroId = Json['ingenieroId'];
+    nombre = Json['nombre'];
+    direccion = Json['direccion'];
+    correo = Json['correo'];
+    numeroContacto = Json['numeroContacto'];
+    dni = Json['dni'];
+    cordX = Json['cordX'];
+    cordY = Json['cordY'];
   }
 
 }
