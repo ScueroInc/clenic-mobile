@@ -1,8 +1,11 @@
+import 'dart:convert';
+
+import 'package:clenic_android/models/EngineersResponse.dart';
 import 'package:flutter/material.dart';
+import 'package:requests/requests.dart';
+import '../../globals.dart';
 import 'LocationEngineer.dart';
 import 'dart:async';
-import 'package:clenic_android/screens/List/CEngineer.dart';
-import 'package:clenic_android/screens/List/Services.dart';
 
 class Engineers extends StatefulWidget{
   @override
@@ -10,16 +13,24 @@ class Engineers extends StatefulWidget{
 }
 
 class _EngineersState extends State<Engineers> {
-  List<CEngineer> engineers = List();
-
+  Future<void>listEngineers()async{
+    var _uri="http://34.72.205.148/Ingeniero/listaIngenieros";
+    return await Requests.get(_uri)
+        .then((date) {
+      var lista=json.decode(date.content()) as List;
+      List<EngineersResponse> data=lista.map((i)=>EngineersResponse.fromJson(i)).toList();
+      print(date.json());
+      Engineerlist=data;
+      print(data[0].ingenieroId);
+      print(Engineerlist.length);
+      print(Engineerlist[0].cordX);
+      print(Engineerlist[0].cordY);
+    });
+  }
   @override
   void initState() {
-    Services.getEngineers().then((engineerFromServer) {
-      setState(() {
-        engineers = engineerFromServer;
-      });
-    });
     super.initState();
+    listEngineers();
   }
 
   @override
@@ -30,7 +41,7 @@ class _EngineersState extends State<Engineers> {
           Expanded(
             child: ListView.builder(
               padding: EdgeInsets.all(10.0),
-              itemCount: 2,
+              itemCount: Engineerlist.length,
               itemBuilder: (BuildContext context,int index){
                 return Card(
                   child: Padding(
@@ -40,22 +51,27 @@ class _EngineersState extends State<Engineers> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        "Codigo de Ingeniero: "+ "engineers[index].id.toString()",
+                        "Nombre: "+ Engineerlist[index].nombre,
                         style: TextStyle(fontSize: 16.0, color: Colors.black,),
                       ),
                       SizedBox(height: 5.0,),
                       Text(
-                        "Nombre: "+"engineers[index].name",
+                        "DNI: "+Engineerlist[index].dni,
                         style: TextStyle(fontSize: 16.0, color: Colors.grey,),
                       ),
                       SizedBox(height: 5.0,),
                       Text(
-                        "Correo: "+"engineers[index].email",
+                        "Correo: "+Engineerlist[index].correo,
                         style: TextStyle(fontSize: 16.0, color: Colors.grey,),
                       ),
                       SizedBox(height: 5.0,),
                       Text(
-                        "Numero de telefono: "+"engineers[index].telephone",
+                        "Numero de telefono: "+Engineerlist[index].numeroContacto.toString(),
+                        style: TextStyle(fontSize: 16.0, color: Colors.grey,),
+                      ),
+                      SizedBox(height: 5.0,),
+                      Text(
+                        "Domicilio: "+Engineerlist[index].direccion,
                         style: TextStyle(fontSize: 16.0, color: Colors.grey,),
                       ),
                     ],
@@ -63,45 +79,6 @@ class _EngineersState extends State<Engineers> {
                   ),
                 )
                 ;
-              },
-            ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              padding: EdgeInsets.all(10.0),
-              itemCount: 1,
-              itemBuilder: (BuildContext context,int index){
-                return Card(
-                  child: Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          "3",
-                          style: TextStyle(fontSize: 16.0, color: Colors.black,),
-                        ),
-                        SizedBox(height: 5.0,),
-                        Text(
-                          "Gonzalo",
-                          style: TextStyle(fontSize: 16.0, color: Colors.grey,),
-                        ),
-                        SizedBox(height: 5.0,),
-                        Text(
-                          "gonzalo@gmail.com",
-                          style: TextStyle(fontSize: 16.0, color: Colors.grey,),
-                        ),
-                        SizedBox(height: 5.0,),
-                        Text(
-                          "987894684",
-                          style: TextStyle(fontSize: 16.0, color: Colors.grey,),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                );
               },
             ),
           ),
