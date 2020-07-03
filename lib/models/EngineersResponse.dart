@@ -1,5 +1,5 @@
 class OrdersResponse{
-  int ordenId;
+  String orderId;
   String estado;
   int lugar_PersonasId;
   int clienteId;
@@ -9,7 +9,7 @@ class OrdersResponse{
 
   OrdersResponse(
       {
-        this.ordenId,
+        this.orderId,
         this.estado,
         this.lugar_PersonasId,
         this.clienteId,
@@ -19,7 +19,7 @@ class OrdersResponse{
       });
 
   OrdersResponse.fromJson(Map<String, dynamic> Json) {
-    ordenId = Json['ordenId'];
+    orderId = Json['orderId'];
     estado = Json['estado'];
     lugar_PersonasId = Json['lugar_PersonasId'];
     clienteId = Json['clienteId'];

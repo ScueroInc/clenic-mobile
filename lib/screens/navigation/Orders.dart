@@ -33,9 +33,9 @@ class _OrdersState extends State<Orders>{
 
   @override
   void initState() {
-
-    ListarOrdenes();
     super.initState();
+    ListarOrdenes();
+
   }
 
 
@@ -92,7 +92,7 @@ class _OrdersState extends State<Orders>{
           Expanded(
             child: ListView.builder(
               padding: EdgeInsets.all(10.0),
-              itemCount: 6,
+              itemCount: orderlist.length,
               itemBuilder: (BuildContext context,int index){
                 return Card(
                   child: Padding(
@@ -103,22 +103,22 @@ class _OrdersState extends State<Orders>{
                       children: <Widget>[
                         SizedBox(height: 5.0,),
                         Text(
-                          "Número de orden: "+"117",
+                          "Número de orden: "+(orderlist[index].ordenId).toString(),
                           style: TextStyle(fontSize: 16.0, color: Colors.black,),
                         ),
                         SizedBox(height: 5.0,),
                         Text(
-                          "Nombre del Ingeniero: "+"Gonzalo Escudero",
+                          "Nombre del Ingeniero: "+orderlist[index].estado.toString(),
                           style: TextStyle(fontSize: 16.0, color: Colors.grey,),
                         ),
                         SizedBox(height: 5.0,),
                         Text(
-                          "Nombre de la empresa: "+"Clinica San Felipe",
+                          "Nombre de la empresa: "+orderlist[index].nombreCliente.toString(),
                           style: TextStyle(fontSize: 16.0, color: Colors.grey,),
                         ),
                         SizedBox(height: 5.0,),
                         Text(
-                          "Estado: "+"Correctivo",
+                          "Estado: "+orderlist[index].correoCliente,
                           style: TextStyle(fontSize: 16.0, color: Colors.grey,),
                         ),
                       ],
