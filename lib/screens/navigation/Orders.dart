@@ -1,3 +1,5 @@
+import 'package:clenic_android/globals.dart';
+import 'package:clenic_android/models/OrdersResponse.dart';
 import 'package:flutter/material.dart';
 import 'package:requests/requests.dart';
 
@@ -18,20 +20,22 @@ class Orders extends StatefulWidget{
 
 class _OrdersState extends State<Orders>{
   Future<void>ListarOrdenes()async{
-
-    var _uri="http://35.193.246.207/Orden/listaOrdenes";
-    return await Requests.get(_uri,json: true)
+    var _uri="http://34.72.205.148/Orden/listaOrdenes";
+    return await Requests.get(_uri)
     .then((date) {
-      print(date.content());
-
+      var lista=json.decode(date.content()) as List;
+      List<OrdersResponse> posts=lista.map((i)=>OrdersResponse.fromJson(i)).toList();
+      print(date.json());
+      orderlist=posts;
+      print(posts[0].clienteId);
     });
   }
 
   @override
   void initState() {
-
-    ListarOrdenes();
     super.initState();
+    ListarOrdenes();
+
   }
 
 
@@ -40,7 +44,6 @@ class _OrdersState extends State<Orders>{
     BuildContext context1 =context;
     BuildContext context2 =context1;
     return (await showDialog(
-
       context: context,
       builder: (context) => new AlertDialog(
         title: new Text('Desea realizar el reporte fin'),
@@ -89,7 +92,7 @@ class _OrdersState extends State<Orders>{
           Expanded(
             child: ListView.builder(
               padding: EdgeInsets.all(10.0),
-              itemCount: 6,
+              itemCount: orderlist.length,
               itemBuilder: (BuildContext context,int index){
                 return Card(
                   child: Padding(
@@ -100,22 +103,22 @@ class _OrdersState extends State<Orders>{
                       children: <Widget>[
                         SizedBox(height: 5.0,),
                         Text(
-                          "Número de orden: "+"117",
+                          "Número de orden: "+(orderlist[index].ordenId).toString(),
                           style: TextStyle(fontSize: 16.0, color: Colors.black,),
                         ),
                         SizedBox(height: 5.0,),
                         Text(
-                          "Nombre del Ingeniero: "+"Gonzalo Escudero",
+                          "Nombre del Ingeniero: "+orderlist[index].estado.toString(),
                           style: TextStyle(fontSize: 16.0, color: Colors.grey,),
                         ),
                         SizedBox(height: 5.0,),
                         Text(
-                          "Nombre de la empresa: "+"Clinica San Felipe",
+                          "Nombre de la empresa: "+orderlist[index].nombreCliente.toString(),
                           style: TextStyle(fontSize: 16.0, color: Colors.grey,),
                         ),
                         SizedBox(height: 5.0,),
                         Text(
-                          "Estado: "+"Correctivo",
+                          "Estado: "+orderlist[index].correoCliente,
                           style: TextStyle(fontSize: 16.0, color: Colors.grey,),
                         ),
                       ],
