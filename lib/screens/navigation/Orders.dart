@@ -1,3 +1,5 @@
+import 'package:clenic_android/globals.dart';
+import 'package:clenic_android/models/OrdersResponse.dart';
 import 'package:flutter/material.dart';
 import 'package:requests/requests.dart';
 
@@ -18,10 +20,14 @@ class Orders extends StatefulWidget{
 
 class _OrdersState extends State<Orders>{
   Future<void>ListarOrdenes()async{
-    var _uri=urlBaseApi+"Orden/listaOrdenes";
+    var _uri="http://34.72.205.148/Orden/listaOrdenes";
     return await Requests.get(_uri)
     .then((date) {
-      print(date.content());
+      var lista=json.decode(date.content()) as List;
+      List<OrdersResponse> posts=lista.map((i)=>OrdersResponse.fromJson(i)).toList();
+      print(date.json());
+      orderlist=posts;
+      print(posts[0].clienteId);
     });
   }
 
