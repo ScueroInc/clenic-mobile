@@ -13,14 +13,15 @@ class OrderForm extends StatefulWidget {
 }
 
 class _OrderFormState extends State<OrderForm> {
-  int lugar_PersonaId=0;
-  String estado="";
+  int lugar_PersonaId=1;
+  String estado='';
   int empleadoId=0;
   final formKey = new GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
+    estado='';
   }
   void _showAlert(String valor){
     AlertDialog dialogo =new AlertDialog(
@@ -32,8 +33,8 @@ class _OrderFormState extends State<OrderForm> {
     var cj=new CookieJar();
     var cuerpoRqst = {
       "lugar_PersonaId": lugar_PersonaId,
-      "fechaGeneracion": DateTime.now(),
-      "fechaEjecucion": "null",
+      "fechaGeneracion": null,
+      "fechaEjecucion": null,
       "estado": "Por confirmar",
       "empleadoId": userId
     };
@@ -73,15 +74,15 @@ class _OrderFormState extends State<OrderForm> {
                 child: DropDownFormField(
                   titleText: 'Equipo Médico a reparar',
                   hintText: 'Por favor seleccione uno',
-                  value: lugar_PersonaId,
+                  value: estado,
                   onSaved: (value) {
                     setState(() {
-                      lugar_PersonaId = value;
+                      estado = value;
                     });
                   },
                   onChanged: (value) {
                     setState(() {
-                      lugar_PersonaId = value;
+                      estado = value;
                     });
                   },
                   dataSource: [
