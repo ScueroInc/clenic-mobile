@@ -1,6 +1,7 @@
 import 'package:clenic_android/animations/FadeAnimation.dart';
 import 'package:clenic_android/globals.dart';
 import 'package:clenic_android/main.dart';
+import 'package:clenic_android/models/OrdersResponse.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:clenic_android/screens/SignUp.dart';
@@ -16,7 +17,6 @@ import 'package:requests/requests.dart';
 import 'package:requests/src/requests.dart';
 
 import 'engineer/EngineerNavigationDrawer.dart';
-import 'package:clenic_android/common/Request.dart';
 class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
@@ -73,7 +73,17 @@ class _LoginState extends State<Login> {
       return ;
     });
   }
-
+  Future<void>ListarOrdenes()async{
+    var _uri="http://34.72.205.148/Orden/listaOrdenes";
+    return await Requests.get(_uri)
+        .then((date) {
+      var lista=json.decode(date.content()) as List;
+      List<OrdersResponse> posts=lista.map((i)=>OrdersResponse.fromJson(i)).toList();
+      print(date.json());
+      orderlist=posts;
+      print(posts[0].clienteId);
+    });
+  }
 
 // var respuesta=autenticacionPost(_uri);
 // respuesta.then((value){
@@ -176,6 +186,7 @@ class _LoginState extends State<Login> {
                   FadeAnimation(2.1,GestureDetector(
                     onTap: () {
                       Autenticarse();
+                      ListarOrdenes();
                     },
                     child: Container(
                       height: 50,

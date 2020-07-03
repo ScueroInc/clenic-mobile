@@ -1,6 +1,8 @@
+import 'dart:convert';
 import 'dart:core';
 import 'package:clenic_android/common/Request.dart';
 import 'package:clenic_android/globals.dart';
+import 'package:clenic_android/models/OrdersResponse.dart';
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dropdown_formfield/dropdown_formfield.dart';
 import 'package:flutter/cupertino.dart';
@@ -29,6 +31,17 @@ class _OrderFormState extends State<OrderForm> {
     );
     showDialog(context: context,child: dialogo);
   }
+  Future<void>ListarOrdenes()async{
+    var _uri="http://34.72.205.148/Orden/listaOrdenes";
+    return await Requests.get(_uri)
+        .then((date) {
+      var lista=json.decode(date.content()) as List;
+      List<OrdersResponse> posts=lista.map((i)=>OrdersResponse.fromJson(i)).toList();
+      print(date.json());
+      orderlist=posts;
+      print(posts[0].clienteId);
+    });
+  }
   Future<void> sendForm ()async {
     var cj=new CookieJar();
     var cuerpoRqst = {
@@ -47,7 +60,8 @@ class _OrderFormState extends State<OrderForm> {
       print(data.content());
       if (data.statusCode == 200) {
         print("Se mandó la orden");
-
+        ListarOrdenes();
+        Navigator.of(context).pop(true);
 
       } else {
         _showAlert(data.content());
@@ -71,7 +85,7 @@ class _OrderFormState extends State<OrderForm> {
               Container(
                 padding: EdgeInsets.all(16),
                 child: DropDownFormField(
-                  titleText: 'Equipo Médico a reparar',
+                  titleText: 'Equipo Médico a reparar:',
                   hintText: 'Por favor seleccione uno',
                   value: ejemplarId,
                   onSaved: (value) {
@@ -90,7 +104,7 @@ class _OrderFormState extends State<OrderForm> {
                       "value": "1",
                     },
                     {
-                      "display": "Steñ",
+                      "display": "Desfibrilador",
                       "value": "2",
                     },
                   ],
@@ -101,7 +115,7 @@ class _OrderFormState extends State<OrderForm> {
               Container(
                 padding: EdgeInsets.all(16),
                 child: DropDownFormField(
-                  titleText: 'Equipo Médico a reparar',
+                  titleText: 'Tipo de trabajo:',
                   hintText: 'Por favor seleccione uno',
                   value: servicioId,
                   onSaved: (value) {
@@ -161,7 +175,7 @@ class _OrderFormState extends State<OrderForm> {
               Container(
                 padding: EdgeInsets.all(16),
                 child: DropDownFormField(
-                  titleText: 'Lugar a realizar la reparación',
+                  titleText: 'Empleado que realizará el pedido',
                   hintText: 'Por favor seleccione uno',
                   value: empleadoId,
                   onSaved: (value) {
@@ -190,13 +204,18 @@ class _OrderFormState extends State<OrderForm> {
               ),
               Container(
                 padding: EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: Color.fromRGBO(49, 39, 79, 1),
-                ),
+
                 child: RaisedButton(
                   child: Text('Enviar'),
                   onPressed: sendForm,
+                  color: Colors.blueAccent,
+                  splashColor: Colors.green,
+                  animationDuration: Duration(seconds: 1),
+                  elevation:5.0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(18.0),
+                      side: BorderSide(color: Colors.black),
+                    )
                 ),
               ),
             ],

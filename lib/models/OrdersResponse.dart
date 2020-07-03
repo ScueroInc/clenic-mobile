@@ -1,6 +1,10 @@
 class OrdersResponse{
   int ordenId;
+  String nombreIngeniero;
+  String seriesEjemplar;
+  String serviciosNombre;
   String estado;
+
   int lugar_PersonasId;
   int clienteId;
   String nombreCliente;
@@ -10,7 +14,11 @@ class OrdersResponse{
   OrdersResponse(
       {
         this.ordenId,
+        this.nombreIngeniero,
+        this.seriesEjemplar,
+        this.serviciosNombre,
         this.estado,
+
         this.lugar_PersonasId,
         this.clienteId,
         this.nombreCliente,
@@ -26,6 +34,10 @@ class OrdersResponse{
     nombreCliente = Json['nombreCliente'];
     direccionLugar = Json['direccionLugar'];
     correoCliente = Json['correoCliente'];
+    nombreIngeniero = Json['nombreIngeniero'];
+    seriesEjemplar = Json['seriesEjemplar'];
+    serviciosNombre = Json['serviciosNombre'];
+
   }
 
 }

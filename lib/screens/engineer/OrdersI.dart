@@ -7,10 +7,12 @@ import 'package:clenic_android/screens/navigation/OrderForm.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:requests/requests.dart';
+
 import 'dart:async';
 import "package:http/http.dart" as http ;
 import 'dart:convert';
-
+import 'package:clenic_android/models/LoginResponse.dart';
+import 'package:clenic_android/common/Request.dart';
 
 
 import 'package:cookie_jar/cookie_jar.dart';
@@ -23,17 +25,6 @@ class Orders extends StatefulWidget{
 class _OrdersState extends State<Orders>{
 
   var formatter = new DateFormat('dd-MM-yyyy');
-  Future<void>ListarEjemplares()async{
-    var _uri="http://34.72.205.148/Ejemplar/listarEjemplares";
-    return await Requests.get(_uri)
-        .then((date) {
-      var lista=json.decode(date.content()) as List;
-      List<EjemplarResponse> posts=lista.map((i)=>EjemplarResponse.fromJson(i)).toList();
-      print(date.json());
-      Ejemplarlist=posts;
-      print(posts[0].nombreModelo);
-    });
-  }
   Future<void>ListarOrdenes()async{
     var _uri="http://34.72.205.148/Orden/listaOrdenes";
     return await Requests.get(_uri)
@@ -74,7 +65,6 @@ class _OrdersState extends State<Orders>{
   void initState() {
     super.initState();
     ListarOrdenes();
-    ListarEjemplares();
     listPlaces();
     listEngineers();
   }
@@ -180,16 +170,7 @@ class _OrdersState extends State<Orders>{
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => OrderForm()),
-          );
-        },
-        child: Icon(Icons.add),
-        backgroundColor: Colors.blueAccent,
-      ),
+
     );}
 
 
