@@ -1,5 +1,6 @@
 library clenic_android.globals;
 
+import 'models/EjemplarResponse.dart';
 import 'models/EngineersResponse.dart';
 import 'models/OrdersResponse.dart';
 import 'models/PlacesResponse.dart';
@@ -12,3 +13,4 @@ String userphone="";
 List<OrdersResponse> orderlist = [];
 List<EngineersResponse> Engineerlist=[];
 List<PlacesResponse>Placeslist=[];
+List<EjemplarResponse>Ejemplarlist=[];

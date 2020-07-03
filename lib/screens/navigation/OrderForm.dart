@@ -13,15 +13,15 @@ class OrderForm extends StatefulWidget {
 }
 
 class _OrderFormState extends State<OrderForm> {
-  int lugar_PersonaId=1;
-  String estado='';
-  int empleadoId=0;
+  String lugar_PersonaId;
+  String empleadoId;
+  String ejemplarId;
+  String  servicioId;
   final formKey = new GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
-    estado='';
   }
   void _showAlert(String valor){
     AlertDialog dialogo =new AlertDialog(
@@ -32,11 +32,10 @@ class _OrderFormState extends State<OrderForm> {
   Future<void> sendForm ()async {
     var cj=new CookieJar();
     var cuerpoRqst = {
-      "lugar_PersonaId": lugar_PersonaId,
-      "fechaGeneracion": null,
-      "fechaEjecucion": null,
-      "estado": "Por confirmar",
-      "empleadoId": userId
+      "lugar_PersonaId": int.parse(lugar_PersonaId),
+      "empleadoId": int.parse(empleadoId),
+      "ejemplarId":int.parse(ejemplarId),
+      "servicioId": int.parse(servicioId)
     };
     var _headersPost = {
       "Content-Type": "application/json",
@@ -74,20 +73,20 @@ class _OrderFormState extends State<OrderForm> {
                 child: DropDownFormField(
                   titleText: 'Equipo Médico a reparar',
                   hintText: 'Por favor seleccione uno',
-                  value: estado,
+                  value: ejemplarId,
                   onSaved: (value) {
                     setState(() {
-                      estado = value;
+                      ejemplarId = value;
                     });
                   },
                   onChanged: (value) {
                     setState(() {
-                      estado = value;
+                      ejemplarId = value;
                     });
                   },
                   dataSource: [
                     {
-                      "display": "Stella Sad",
+                      "display": Ejemplarlist[0].nombreModelo.toString(),
                       "value": "1",
                     },
                     {
@@ -100,7 +99,101 @@ class _OrderFormState extends State<OrderForm> {
                 ),
               ),
               Container(
+                padding: EdgeInsets.all(16),
+                child: DropDownFormField(
+                  titleText: 'Equipo Médico a reparar',
+                  hintText: 'Por favor seleccione uno',
+                  value: servicioId,
+                  onSaved: (value) {
+                    setState(() {
+                      servicioId = value;
+                    });
+                  },
+                  onChanged: (value) {
+                    setState(() {
+                      servicioId = value;
+                    });
+                  },
+                  dataSource: [
+                    {
+                      "display": "Mantenimiento",
+                      "value": "1",
+                    },
+                    {
+                      "display": "Reparacion",
+                      "value": "2",
+                    },
+                  ],
+                  textField: 'display',
+                  valueField: 'value',
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(16),
+                child: DropDownFormField(
+                  titleText: 'Lugar a realizar la reparación',
+                  hintText: 'Por favor seleccione uno',
+                  value: lugar_PersonaId,
+                  onSaved: (value) {
+                    setState(() {
+                      lugar_PersonaId = value;
+                    });
+                  },
+                  onChanged: (value) {
+                    setState(() {
+                      lugar_PersonaId = value;
+                    });
+                  },
+                  dataSource: [
+                    {
+                      "display": Placeslist[0].nombreSede,
+                      "value": "1",
+                    },
+                    {
+                      "display": Placeslist[1].nombreSede,
+                      "value": "2",
+                    },
+                  ],
+                  textField: 'display',
+                  valueField: 'value',
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(16),
+                child: DropDownFormField(
+                  titleText: 'Lugar a realizar la reparación',
+                  hintText: 'Por favor seleccione uno',
+                  value: empleadoId,
+                  onSaved: (value) {
+                    setState(() {
+                      empleadoId = value;
+                    });
+                  },
+                  onChanged: (value) {
+                    setState(() {
+                      empleadoId = value;
+                    });
+                  },
+                  dataSource: [
+                    {
+                      "display": Engineerlist[0].nombre,
+                      "value": Engineerlist[0].ingenieroId.toString(),
+                    },
+                    {
+                      "display": Engineerlist[1].nombre,
+                      "value": Engineerlist[1].ingenieroId.toString(),
+                    },
+                  ],
+                  textField: 'display',
+                  valueField: 'value',
+                ),
+              ),
+              Container(
                 padding: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: Color.fromRGBO(49, 39, 79, 1),
+                ),
                 child: RaisedButton(
                   child: Text('Enviar'),
                   onPressed: sendForm,
