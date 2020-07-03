@@ -44,8 +44,8 @@ class _LoginState extends State<Login> {
       "Accept": "application/json",
     };
 
-    var __uri = new Uri.http(urlBaseApi, "Sesion/login");
-    var _uri=urlBaseApi+"Sesion/login";
+
+    var _uri="http://35.193.246.207/Sesion/login";
     return await Requests.post(_uri,headers: _headersPost, json: cuerpoRqst)
         .then((data) {
           print(data.content());

@@ -18,10 +18,12 @@ class Orders extends StatefulWidget{
 
 class _OrdersState extends State<Orders>{
   Future<void>ListarOrdenes()async{
-    var _uri=urlBaseApi+"Orden/listaOrdenes";
-    return await Requests.get(_uri)
+
+    var _uri="http://35.193.246.207/Orden/listaOrdenes";
+    return await Requests.get(_uri,json: true)
     .then((date) {
       print(date.content());
+
     });
   }
 
@@ -38,6 +40,7 @@ class _OrdersState extends State<Orders>{
     BuildContext context1 =context;
     BuildContext context2 =context1;
     return (await showDialog(
+
       context: context,
       builder: (context) => new AlertDialog(
         title: new Text('Desea realizar el reporte fin'),
