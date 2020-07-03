@@ -130,7 +130,7 @@ class _HomeState extends State<Home>{
           children: <Widget>[
             UserAccountsDrawerHeader(
               accountName: Text(userPerson),
-              accountEmail: Text('mcouto@solera.pe'),
+              accountEmail: Text(usermail),
               currentAccountPicture: CircleAvatar(
                 backgroundColor: Colors.blue,
                 child: Text(userPerson.substring(0,1),style: TextStyle(fontSize: 40.0),),

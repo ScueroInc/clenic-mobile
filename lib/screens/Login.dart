@@ -52,6 +52,8 @@ class _LoginState extends State<Login> {
         var objLogin = LoginResponse.fromJson(json.decode(data.content()));
         userId=objLogin.personaId.toString();
         userPerson=objLogin.nombre.toString();
+        usermail=objLogin.correo.toString();
+        userphone=objLogin.numContacto.toString();
         print(json.encode(objLogin));
         switch(objLogin.perfil.toString())
         {

@@ -17,7 +17,7 @@ class EngineersResponse{
         this.numeroContacto,
         this.dni,
         this.cordX,
-        this.cordY
+        this.cordY,
       });
 
   EngineersResponse.fromJson(Map<String, dynamic> Json) {

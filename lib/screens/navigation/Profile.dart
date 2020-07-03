@@ -8,7 +8,25 @@ class Profile extends StatefulWidget{
 }
 
 class _ProfileState extends State<Profile>{
+  String email="";
+  String contact="";
+void getProfile(){
+  for(int i =0;i<Engineerlist.length;i++ ) {
+    if(userId==Engineerlist[i].ingenieroId.toString())
+      {
+        email=Engineerlist[i].correo;
+        contact=Engineerlist[i].numeroContacto.toString();
+      }
 
+  }
+
+
+}
+  @override
+  void initState() {
+    super.initState();
+    getProfile();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,7 +111,7 @@ class _ProfileState extends State<Profile>{
                 ),
                 SizedBox(height: 5.0,),
                 Text(
-                  "mcouto@solera.pe",
+                  usermail ,
                   style: TextStyle(fontSize: 17.0, color: Colors.white,),
                 ),
                 SizedBox(height: 5.0,),
@@ -103,7 +121,7 @@ class _ProfileState extends State<Profile>{
                 ),
                 SizedBox(height: 5.0,),
                 Text(
-                  "+51 955740898",
+                  userphone,
                   style: TextStyle(fontSize: 17.0, color: Colors.white,),
                 ),
                 SizedBox(height: 5.0,),
@@ -113,7 +131,7 @@ class _ProfileState extends State<Profile>{
                 ),
                 SizedBox(height: 5.0,),
                 Text(
-                  "5",
+                  Engineerlist.length.toString(),
                   style: TextStyle(fontSize: 17.0, color: Colors.white,),
                 ),
                 SizedBox(height: 5.0,),
@@ -123,7 +141,7 @@ class _ProfileState extends State<Profile>{
                 ),
                 SizedBox(height: 5.0,),
                 Text(
-                  "02 de julio del 2020",
+                  "09 de julio del 2020",
                   style: TextStyle(fontSize: 17.0, color: Colors.white,),
                 ),
 
