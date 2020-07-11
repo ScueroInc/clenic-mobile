@@ -60,7 +60,7 @@ class _PlacesState extends State<Places>{
                         ),
                         SizedBox(height: 5.0,),
                         Text(
-                          "Cantidad de servicios: "+Placeslist[index].numContacto.toString(),
+                          "Teléfono de contacto: "+Placeslist[index].numContacto.toString(),
                           style: TextStyle(fontSize: 16.0, color: Colors.grey,),
                         ),
                       ],
