@@ -61,6 +61,10 @@ class _LoginState extends State<Login> {
               context,
               MaterialPageRoute(builder: (context)=>EngineerNavigationDrawer()));
           break;}
+          case "S": {Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context)=>NavigationDrawer())
+          );break;}
           case "A": {Navigator.push(
               context,
               MaterialPageRoute(builder: (context)=>NavigationDrawer())

@@ -104,8 +104,16 @@ class _OrderFormState extends State<OrderForm> {
                       "value": "1",
                     },
                     {
-                      "display": "Desfibrilador",
+                      "display": Ejemplarlist[1].nombreModelo.toString(),
                       "value": "2",
+                    },
+                    {
+                      "display": Ejemplarlist[2].nombreModelo.toString(),
+                      "value": "3",
+                    },
+                    {
+                      "display": Ejemplarlist[3].nombreModelo.toString(),
+                      "value": "4",
                     },
                   ],
                   textField: 'display',
@@ -167,6 +175,10 @@ class _OrderFormState extends State<OrderForm> {
                       "display": Placeslist[1].nombreSede,
                       "value": "2",
                     },
+                    {
+                      "display": Placeslist[2].nombreSede,
+                      "value": "3",
+                    },
                   ],
                   textField: 'display',
                   valueField: 'value',
@@ -197,6 +209,11 @@ class _OrderFormState extends State<OrderForm> {
                       "display": Engineerlist[1].nombre,
                       "value": Engineerlist[1].ingenieroId.toString(),
                     },
+                    {
+                      "display": Engineerlist[2].nombre,
+                      "value": Engineerlist[2].ingenieroId.toString(),
+                    },
+
                   ],
                   textField: 'display',
                   valueField: 'value',
