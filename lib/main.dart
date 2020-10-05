@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 5),(){
+    Timer(Duration(seconds: 3),(){
       Navigator.push(context, MaterialPageRoute(
         builder: (context)=>Login()
       ));
@@ -81,7 +81,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    CircularProgressIndicator(),
+                    CircularProgressIndicator(backgroundColor: Colors.white,),
                     Padding(
                       padding: EdgeInsets.only(top:20.0),
                     ),

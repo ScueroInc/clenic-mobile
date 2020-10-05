@@ -1,6 +1,6 @@
 import 'package:clenic_android/screens/Login.dart';
 import 'package:flutter/material.dart';
-import 'package:clenic_android/screens/navigation/Home.dart';
+import 'ChiefHome.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class NavigationDrawer extends StatefulWidget{

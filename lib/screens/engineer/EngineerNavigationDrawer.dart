@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:clenic_android/screens/navigation/Home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class NavigationDrawer extends StatefulWidget{
+import 'EngineerHome.dart';
+
+class EngineerNavigationDrawer extends StatefulWidget{
   @override
-  _NavigationDrawerState createState() => _NavigationDrawerState();
+  _EngineerNavigationDrawerState createState() => _EngineerNavigationDrawerState();
 }
 
-class _NavigationDrawerState extends State<NavigationDrawer>{
+class _EngineerNavigationDrawerState extends State<EngineerNavigationDrawer>{
 
   SharedPreferences sharedPreferences;
 
@@ -16,7 +18,7 @@ class _NavigationDrawerState extends State<NavigationDrawer>{
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Home(),
+      home: EngineerHome(),
       theme: ThemeData(
         primaryColor: Color(0xFF2F008E),
         accentColor: Color(0xFFFDD303)
